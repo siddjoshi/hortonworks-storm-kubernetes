@@ -75,6 +75,7 @@ RUN yum install -y storm; \
 ## To build locally
 # COPY docker-entrypoint.sh /
 ## To build on Dockerhub
-COPY /Storm/Docker/docker-entrypoint.sh /
+##COPY /Storm/Docker/docker-entrypoint.sh /
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
