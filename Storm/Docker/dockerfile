@@ -72,6 +72,9 @@ RUN yum install -y storm; \
 #    yum -y update; 
 #    yum -y install gosu
 
-COPY docker-entrypoint.sh /
+## To build locally
+# COPY docker-entrypoint.sh /
+## To build on Dockerhub
+COPY /Storm/Docker/docker-entrypoint.sh /
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
