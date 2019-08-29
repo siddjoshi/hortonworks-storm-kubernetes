@@ -68,6 +68,9 @@ RUN yum install -y storm; \
 #'nimbus.seeds: "nimbus"' \
 #'storm.log.dir: "/etc/storm/logs"' \
 #'storm.local.dir: "/etc/storm/data"' >> /etc/storm/conf/storm.yaml
+#RUN yum -y install epel-release; \
+#    yum -y update; 
+#    yum -y install gosu
 
 COPY docker-entrypoint.sh /
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]
