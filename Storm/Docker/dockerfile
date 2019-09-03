@@ -11,11 +11,13 @@ FROM centos:7
 
 ## Install Open JDK 7
 
-RUN yum install -y java-1.7.0-openjdk java-1.7.0-openjdk-devel
+##RUN yum install -y java-1.7.0-openjdk java-1.7.0-openjdk-devel
 
-RUN mkdir /usr/java && ln -s /usr/hdp/current/jvm/java-1.7.0-openjdk-1.7.0.51.x86_64 /usr/java/default 
+RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel
 
-RUN export JAVA_HOME=/usr/java/default && export PATH=$JAVA_HOME/bin:$PATH && yum install -y wget
+#RUN mkdir /usr/java && ln -s /usr/hdp/current/jvm/java-1.7.0-openjdk-1.7.0.51.x86_64 /usr/java/default 
+
+#RUN export JAVA_HOME=/usr/java/default && export PATH=$JAVA_HOME/bin:$PATH && yum install -y wget
 
 
 ## Add Hortonworks Repo
@@ -75,7 +77,7 @@ RUN yum install -y storm; \
 ## To build locally
 # COPY docker-entrypoint.sh /
 ## To build on Dockerhub
-COPY /Storm/Docker/docker-entrypoint.sh /
+COPY /Storm/Docker/docker-entrypoint.sh /docker-entrypoint.sh
 ##COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
